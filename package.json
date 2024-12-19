@@ -19,7 +19,6 @@
     "@vueuse/core": "^12.0.0",
     "firebase": "^10.13.1",
     "vue": "^3.4.38",
-    "vue-intersect": "^1.1.6",
     "vue-router": "^4.4.3"
   }
 }
