@@ -74,7 +74,7 @@ const { formData, loading, feedbackLogin, handleSubmit } = useLoginForm(router);
       <BaseLabel for="password">Contraseña</BaseLabel>
       <BaseInput v-model="formData.password" id="password" type="password" autocomplete="current-password" required />
       
-      <BaseButton :loading="loading">Iniciar Sesión</BaseButton>
+      <BaseButton :loading="loading" class="mt-4">Iniciar Sesión</BaseButton>
       
       <BaseAlert v-if="feedbackLogin">{{ feedbackLogin }}</BaseAlert>
     </form>

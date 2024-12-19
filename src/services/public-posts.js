@@ -1,4 +1,4 @@
-import { db } from './firebase'; // Asegúrate de importar tu instancia de Firestore
+import { db } from './firebase';
 import { collection, addDoc, onSnapshot, query, where, doc, getDoc, updateDoc } from 'firebase/firestore';
 
 const postsCollection = collection(db, 'posts');

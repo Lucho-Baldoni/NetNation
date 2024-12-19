@@ -89,13 +89,13 @@ function usePrivateChatForm(senderId, receiverId) {
 
 <template>
     <div 
-        v-if="loadingUser || loadingMessages"
+        v-if="loadingUser  || loadingMessages"
         class="flex justify-center p-4"
     >
         <BaseLoader />
     </div>
     <template v-else>
-        <BaseHeading1 class="text-center mb-4">Chat Privado con {{ user.email }}</BaseHeading1>
+        <BaseHeading1 class="text-center mb-4">Chat Privado con {{ user.displayName || user.email }}</BaseHeading1>
 
         <section class="mb-4">
             <h2 class="sr-only">Mensajes</h2>
@@ -107,11 +107,11 @@ function usePrivateChatForm(senderId, receiverId) {
                         :key="message.id"
                         class="p-4 rounded-lg transition duration-200"
                         :class="{
-                            'bg-gray-200 text-gray-800 shadow-md': message.user_id !== loggedUser.id,
-                            'bg-blue-200 text-gray-800 self-end shadow-md': message.user_id === loggedUser.id,
+                            'bg-gray-200 text-gray-800 shadow-md': message.user_id !== loggedUser .id,
+                            'bg-blue-200 text-gray-800 self-end shadow-md': message.user_id === loggedUser .id,
                         }"
                     >
-                        <div class="font-semibold">{{ message.user_id === loggedUser.id ? 'Tú' : user.email }}</div>
+                        <div class="font-semibold">{{ message.user_id === loggedUser .id ? 'Tú' : user.displayName || user.email }}</div>
                         <div class="text-gray-700">{{ message.text }}</div>
                         <div class="text-xs text-gray-500 mt-1">{{ formatDate(message.created_at) || 'Enviando...' }}</div>
                     </li>
@@ -132,7 +132,7 @@ function usePrivateChatForm(senderId, receiverId) {
             ></textarea>
             <button
                 type="submit"
-                class="py-2 px-4 text-black rounded-lg bg-[#07DBA8]  hover:bg-[#05b58b] transition duration-200"
+                class="py-2 px-4 text-black rounded-lg bg-[#07DBA8] hover:bg-[#05b58b] transition duration-200"
             >Enviar</button>
         </form>
     </template>

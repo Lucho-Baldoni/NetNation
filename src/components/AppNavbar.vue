@@ -4,7 +4,7 @@ import useAuth from '../composables/useAuth';
 import { logout } from '../services/auth';
 
 const router = useRouter();
-const { loggedUser   } = useAuth();
+const { loggedUser  } = useAuth();
 
 function handleLogout() {
     logout();
@@ -15,7 +15,9 @@ function handleLogout() {
 <template>
     <div class="flex flex-col items-center">
         <nav class="fixed top-0 left-1/2 transform -translate-x-1/2 flex justify-between items-center p-4 text-slate-800 w-auto rounded-b-lg" style="background-color: #07DBA8; color: black;">
-            <router-link to="/" class="text-xl">DV Social</router-link>
+            <router-link to="/" class="flex items-center">
+                <img src="/logo.png" alt="Logo" class="h-8 mr-2" />
+            </router-link>
 
             <ul class="flex gap-4">
                 <template v-if="loggedUser .id === null">
@@ -38,10 +40,10 @@ function handleLogout() {
                     </li>
                     <li>
                         <form action="#" @submit.prevent="handleLogout">
-    <button type="submit" class="block py-1 px-2" title="Salir">
-        {{ loggedUser.displayName }} <i class="fas fa-sign-out-alt"></i> (Salir)
-    </button>
-</form>
+                            <button type="submit" class="block py-1 px-2" title="Salir">
+                                {{ loggedUser .displayName }} <i class="fas fa-sign-out-alt"></i> (Salir)
+                            </button>
+                        </form>
                     </li>
                 </template>
                 <template v-else>
@@ -59,7 +61,7 @@ function handleLogout() {
             </ul>
         </nav>
         <div class="mt-20">
-            
+            <!-- Aquí puedes agregar más contenido si es necesario -->
         </div>
     </div>
 </template>

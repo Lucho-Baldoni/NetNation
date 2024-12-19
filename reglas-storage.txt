@@ -2,14 +2,18 @@ rules_version = '2';
 
 service firebase.storage {
   match /b/{bucket}/o {
+    // Permitir la lectura de cualquier archivo solo si el usuario está autenticado
     match /{allPaths=**} {
       allow read: if request.auth != null;
     }
     
-    match /users/{user}/{file} {
-      allow create, update: if
-      	request.auth != null &&
-        request.auth.uid == user;
+    // Reglas específicas para los archivos de los usuarios
+    match /users/{userId}/{file} {
+      // Permitir crear y actualizar archivos solo si el usuario está autenticado y es el propietario
+      allow create, update: if request.auth != null && request.auth.uid == userId;
+      
+      // Permitir la lectura de los archivos del usuario
+      allow read: if request.auth != null && request.auth.uid == userId;
     }
   }
 }
